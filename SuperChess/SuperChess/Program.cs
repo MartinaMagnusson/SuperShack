@@ -13,9 +13,40 @@ namespace SuperChess
         {
             Chessboard board = new Chessboard();
             board.Draw();
-            board.MoveWhitePiece();
+            //board.MoveWhitePiece();
             Thread.Sleep(1000);
-           
+
+
+
+            Random rnd = new Random();
+            
+            int x;
+            int y;
+            int xTarget;
+            int yTarget;
+
+            for (int i = 0; i <= 1000000000; i++)
+            {
+                for (int i = 0; i <= 1; i++)
+                {
+                    x = rnd.Next(0, 7);
+                    y = rnd.Next(0, 7);
+                    xTarget = rnd.Next(0, 7);
+                    yTarget = rnd.Next(0, 7);
+                    board.MoveWhitePiece(x, y, xTarget, yTarget);
+
+                }
+                for (int i = 0; i <= 1; i++)
+                {
+                    x = rnd.Next(0, 7);
+                    y = rnd.Next(0, 7);
+                    xTarget = rnd.Next(0, 7);
+                    yTarget = rnd.Next(0, 7);
+                    board.MoveBlackPiece(x, y, xTarget, yTarget);
+
+                }
+            }
+
 
             //board.MoveWhitePiece(6, 2, 5, 2);
 

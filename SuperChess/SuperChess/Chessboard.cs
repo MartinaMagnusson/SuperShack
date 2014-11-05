@@ -21,19 +21,6 @@ namespace SuperChess
             ChessPiece piece = this.board[x, y];
             ChessPiece targetPiece = this.board[xTarget, yTarget];
 
-            Random rnd = new Random();
-            for (int i = 0; i <= 49; i++)
-            {
-                do
-                {
-                    x = rnd.Next(0, 7);
-                    y = rnd.Next(0, 7);
-                }
-                while (board[x, y] != null);
-                board[x, y] = board[xTarget, yTarget];
-            }
-
-
             if (piece == null)//fel som kan uppstå för vita
             {
                 Console.WriteLine("Det finns ingen vit spelare på denna position");
