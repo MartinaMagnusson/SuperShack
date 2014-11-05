@@ -8,7 +8,7 @@ namespace SuperChess
 {
     class ChessPiece
     {
-        bool isWhite = true;
+        bool isWhite = true;       
 
         public ChessPiece(bool isWhite)
         {

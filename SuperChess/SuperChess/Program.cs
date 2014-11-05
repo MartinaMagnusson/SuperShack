@@ -13,16 +13,17 @@ namespace SuperChess
         {
             Chessboard board = new Chessboard();
             board.Draw();
-            
+            board.MoveWhitePiece();
             Thread.Sleep(1000);
+           
 
-            board.MoveWhitePiece(6, 2, 5, 2);
+            //board.MoveWhitePiece(6, 2, 5, 2);
 
-            board.MoveBlackPiece(1, 3, 2, 3);
+            //board.MoveBlackPiece(1, 3, 2, 3);
 
-            board.MoveWhitePiece(5, 2, 2, 3);
+            //board.MoveWhitePiece(5, 2, 2, 3);
 
-            board.MoveBlackPiece(1, 1, 2, 1);
+            //board.MoveBlackPiece(1, 1, 2, 1);
 
 
 

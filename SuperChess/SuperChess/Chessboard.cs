@@ -20,6 +20,20 @@ namespace SuperChess
         {
             ChessPiece piece = this.board[x, y];
             ChessPiece targetPiece = this.board[xTarget, yTarget];
+
+            Random rnd = new Random();
+            for (int i = 0; i <= 49; i++)
+            {
+                do
+                {
+                    x = rnd.Next(0, 7);
+                    y = rnd.Next(0, 7);
+                }
+                while (board[x, y] != null);
+                board[x, y] = board[xTarget, yTarget];
+            }
+
+
             if (piece == null)//fel som kan uppstå för vita
             {
                 Console.WriteLine("Det finns ingen vit spelare på denna position");
@@ -58,6 +72,7 @@ namespace SuperChess
         public string MoveBlackPiece(int x, int y, int xTarget, int yTarget)//drag för svart
         {
             ChessPiece piece = this.board[x, y];
+
             ChessPiece targetPiece = this.board[xTarget, yTarget];
             if (piece == null)//fel som kan uppstå för svart
             {
@@ -131,42 +146,23 @@ namespace SuperChess
         }
         public void InitBoard()
         {
-            //List<ChessPiece> whitePiece = new List<ChessPiece>();
-            //List<ChessPiece> blackPiece = new List<ChessPiece>();
-
-
-            for (int x = 0; x <= 7; x++)
+                       
+            //Sätter ut pjäserna
+            for (int x = 7; x >= 0; x--)
             {
                 if (x == 6)
                     for (int y = 0; y <= 7; y++)
                     {
+                        //Sätter ut vita
                         this.AddChessPiece(new Pawn(true), x, y);
                     }
                 if (x == 1)
                     for (int y = 0; y <= 7; y++)
                     {
+                        //Sätter ut svarta
                         this.AddChessPiece(new Pawn(false), x, y);
                     }
             }
-
-
-            //this.AddChessPiece(new Pawn(true), 6, 0);//vit
-            //this.AddChessPiece(new Pawn(true), 6, 1);
-            //this.AddChessPiece(new Pawn(true), 6, 2);
-            //this.AddChessPiece(new Pawn(true), 6, 3);
-            //this.AddChessPiece(new Pawn(true), 6, 4);
-            //this.AddChessPiece(new Pawn(true), 6, 5);
-            //this.AddChessPiece(new Pawn(true), 6, 6);
-            //this.AddChessPiece(new Pawn(true), 6, 7);
-
-            //this.AddChessPiece(new Pawn(false), 1, 0);//svart
-            //this.AddChessPiece(new Pawn(false), 1, 1);
-            //this.AddChessPiece(new Pawn(false), 1, 2);
-            //this.AddChessPiece(new Pawn(false), 1, 3);
-            //this.AddChessPiece(new Pawn(false), 1, 4);
-            //this.AddChessPiece(new Pawn(false), 1, 5);
-            //this.AddChessPiece(new Pawn(false), 1, 6);
-            //this.AddChessPiece(new Pawn(false), 1, 7);
         }
     }
 }

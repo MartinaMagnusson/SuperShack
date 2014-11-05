@@ -10,7 +10,8 @@ namespace SuperChess
     {
         //public int X { get; set; }
         //public int Y { get; set; }
-        public Pawn(bool isWhite) : base(isWhite)
+        public Pawn(bool isWhite)
+            : base(isWhite)
         {
             //this.X = x;
             //this.Y = y;
@@ -18,7 +19,6 @@ namespace SuperChess
 
         public override string GetChessPieceDescription() //Piece blir en bonde
         {
-            List<ChessPiece> pawns = new List<ChessPiece>();
             return "P";
         }
 
