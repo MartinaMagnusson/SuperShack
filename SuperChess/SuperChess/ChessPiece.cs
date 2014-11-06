@@ -8,13 +8,11 @@ namespace SuperChess
 {
     class ChessPiece
     {
-        bool isWhite = true;       
+       public  bool isWhite = true;       
 
         public ChessPiece(bool isWhite)
         {
             this.isWhite = isWhite; //Sätter om pjäsen är vit eller svart
-            //this.X = x;
-            //this.y = y; 
         }
 
         public bool IsChessPieceWhite() //kollar om piece är vit

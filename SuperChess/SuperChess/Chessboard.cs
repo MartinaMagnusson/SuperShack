@@ -15,7 +15,7 @@ namespace SuperChess
         {
             this.InitBoard();
         }
-
+        public List<string> message = new List<string>();
         public void MoveWhitePiece(int x, int y, int xTarget, int yTarget)//vitas drag
         {
             ChessPiece piece = this.board[x, y];
@@ -23,24 +23,25 @@ namespace SuperChess
 
             if (piece == null)//fel som kan uppstå för vita
             {
-                Console.WriteLine("Det finns ingen vit spelare på denna position");
+                message.Add("Det finns ingen vit spelare på denna position");
+                // Console.WriteLine("Det finns ingen vit spelare på denna position");
                 return;
             }
             if (piece.IsChessPieceBlack())
             {
-                Console.WriteLine("Det går inte att flytta en svart pjäs");
+                message.Add("Det går inte att flytta en svart pjäs");
                 return;
             }
             if (!piece.ValidateMove(x, y, xTarget, yTarget))
             {
-                Console.WriteLine("Ogiltligt drag!");
+                message.Add("Ogiltligt drag!");
                 return;
             }
             if (targetPiece != null)
             {
                 if (targetPiece.IsChessPieceWhite())
                 {
-                    Console.WriteLine("Du kan inte ta din egna pjäs");
+                    message.Add("Du kan inte ta din egna pjäs");
                     return;
                 }
             }
@@ -48,65 +49,61 @@ namespace SuperChess
             this.board[x, y] = null; //När allt går rätt
             this.board[xTarget, yTarget] = piece;
             this.Draw();
+            Console.WriteLine("{0},{1} till {2},{3}", x, y, xTarget, yTarget);
+            foreach (var item in message)
+            {
+                //Console.WriteLine(item);
+            }
             if (targetPiece != null)
             {
-                Console.WriteLine("Vit spelare slog ut" + targetPiece.GetChessPieceDescription());
+                Console.WriteLine("Vit spelare slog ut " + targetPiece.GetChessPieceType());
             }
             Thread.Sleep(1000);
-        }
 
-        private string message;
-        public string MoveBlackPiece(int x, int y, int xTarget, int yTarget)//drag för svart
+
+        }
+        public void MoveBlackPiece(int x, int y, int xTarget, int yTarget)//vitas drag
         {
             ChessPiece piece = this.board[x, y];
-
             ChessPiece targetPiece = this.board[xTarget, yTarget];
-            if (piece == null)//fel som kan uppstå för svart
+
+            if (piece == null)//fel som kan uppstå för vita
             {
-                message = "Det finns ingen svart spelare på denna position";
-                //Console.WriteLine("Det finns ingen svart spelare på denna position");
-                //return;
+              //  Console.WriteLine("Det finns ingen svart spelare på denna position");
+                return;
             }
             if (piece.IsChessPieceWhite())
             {
-                message = "Det går inte att flytta en vit pjäs";
-                //Console.WriteLine("Det går inte att flytta en vit pjäs");
-                //return;
+             //   Console.WriteLine("Det går inte att flytta en vit pjäs");
+                return;
             }
             if (!piece.ValidateMove(x, y, xTarget, yTarget))
             {
-                message = "Ogiltligt drag!";
-                //Console.WriteLine("Ogiltligt drag!");
-                //return;
+               // Console.WriteLine("Ogiltligt drag!");
+                return;
             }
             if (targetPiece != null)
             {
                 if (targetPiece.IsChessPieceBlack())
                 {
-                    message = "Du kan inte ta din egna pjäs";
-                    //Console.WriteLine("Du kan inte ta din egna pjäs");
-                    //return;
+                   // Console.WriteLine("Du kan inte ta din egna pjäs");
+                    return;
                 }
             }
-
-            this.board[x, y] = null;//när allt går rätt
+            
+            this.board[x, y] = null; //När allt går rätt
             this.board[xTarget, yTarget] = piece;
             this.Draw();
+            Console.WriteLine("{0},{1} till {2},{3}", x, y, xTarget, yTarget);
             if (targetPiece != null)
             {
-                message = "Svart spelare slog ut" + targetPiece.GetChessPieceDescription();
-                //Console.WriteLine("Svart spelare slog ut" + targetPiece.GetChessPieceDescription());
+               Console.WriteLine("Svart spelare slog ut vit " + targetPiece.GetChessPieceType());
             }
             Thread.Sleep(1000);
-            return message;
         }
-
         public void AddChessPiece(ChessPiece piece, int x, int y)//en metod för att kunna lägga til piece
         {
-            //List<ChessPiece> whitePiece = new List<ChessPiece>();
-            //List<ChessPiece> blackPiece = new List<ChessPiece>(); 
             this.board[x, y] = piece;
-
         }
 
         public void Draw()//ritar upp spelbrädan 

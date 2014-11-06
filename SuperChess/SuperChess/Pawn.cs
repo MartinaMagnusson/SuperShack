@@ -8,20 +8,33 @@ namespace SuperChess
 {
     class Pawn : ChessPiece
     {
-        //public int X { get; set; }
-        //public int Y { get; set; }
         public Pawn(bool isWhite)
             : base(isWhite)
         {
-            //this.X = x;
-            //this.Y = y;
         }
 
         public override string GetChessPieceDescription() //Piece blir en bonde
         {
             return "P";
         }
+        public override bool ValidateMove(int x, int y, int xTarget, int yTarget) 
+        {
+            bool move = true;
+            
+            //logik för vita
+            if ((this.IsChessPieceWhite()) && (xTarget >= x || xTarget < x - 1))
+                move = false;
+            if (this.IsChessPieceWhite() && (yTarget != y))
+                move = false;
 
+            //Logik för svarta
+            if ((this.IsChessPieceBlack()) && (xTarget <= x || xTarget > x + 1))
+                move = false;
+            if (this.IsChessPieceBlack() && (yTarget != y))
+                move = false;            
+           
+            return move; //Här måste vi kolla om draget är tillåtet, om det inte är tillåtet returnerar vi false.
+        }
 
     }
 }

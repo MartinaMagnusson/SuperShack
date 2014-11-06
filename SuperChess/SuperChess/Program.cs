@@ -12,54 +12,49 @@ namespace SuperChess
         static void Main(string[] args)
         {
             Chessboard board = new Chessboard();
+            ChessPiece whitePiece = new ChessPiece(true);
+            ChessPiece blacwPiece = new ChessPiece(false);
             board.Draw();
             //board.MoveWhitePiece();
-            Thread.Sleep(1000);
-
-
+            Thread.Sleep(1500);
 
             Random rnd = new Random();
-            
+
             int x;
             int y;
             int xTarget;
             int yTarget;
 
-            for (int i = 0; i <= 1000000000; i++)
+            for (int i = 0; i <= 100000; i++)
             {
-                for (int i = 0; i <= 1; i++)
+                do
                 {
-                    x = rnd.Next(0, 7);
-                    y = rnd.Next(0, 7);
-                    xTarget = rnd.Next(0, 7);
-                    yTarget = rnd.Next(0, 7);
-                    board.MoveWhitePiece(x, y, xTarget, yTarget);
+                    x = rnd.Next(0, 8);
+                    y = rnd.Next(0, 8);
+                    xTarget = rnd.Next(0, 8);
+                    yTarget = rnd.Next(0, 8);
+                    if (whitePiece.IsChessPieceWhite() == true)
+                    {
+                        board.MoveWhitePiece(x, y, xTarget, yTarget);
 
-                }
-                for (int i = 0; i <= 1; i++)
+                    }
+                } while (whitePiece.IsChessPieceWhite() != true);
+
+                do
                 {
-                    x = rnd.Next(0, 7);
-                    y = rnd.Next(0, 7);
-                    xTarget = rnd.Next(0, 7);
-                    yTarget = rnd.Next(0, 7);
-                    board.MoveBlackPiece(x, y, xTarget, yTarget);
+                    x = rnd.Next(0, 8);
+                    y = rnd.Next(0, 8);
+                    xTarget = rnd.Next(0, 8);
+                    yTarget = rnd.Next(0, 8);
+                    if (blacwPiece.IsChessPieceBlack() == true)
+                    {
 
-                }
+                        board.MoveBlackPiece(x, y, xTarget, yTarget);
+                    }
+                } while (blacwPiece.IsChessPieceBlack() != true);
+                
+
             }
-
-
-            //board.MoveWhitePiece(6, 2, 5, 2);
-
-            //board.MoveBlackPiece(1, 3, 2, 3);
-
-            //board.MoveWhitePiece(5, 2, 2, 3);
-
-            //board.MoveBlackPiece(1, 1, 2, 1);
-
-
-
-
-
             Console.ReadKey();
         }
     }
