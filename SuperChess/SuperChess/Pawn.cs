@@ -8,14 +8,23 @@ namespace SuperChess
 {
     class Pawn : ChessPiece
     {
-        public Pawn(bool isWhite)
-            : base(isWhite)
+        public Pawn(bool isWhite, int x, int y) : base (isWhite, x, y)
         {
+            X= x;
+            Y = y;
         }
-
+        
         public override string GetChessPieceDescription() //Piece blir en bonde
         {
             return "P";
+        }
+        public override void PositionWhite(int x, int y)
+        {
+            List<ChessPiece> whitePlayer = new List<ChessPiece>();
+        }
+        public override void PositionBlack(int x, int y)
+        {
+            List<ChessPiece> blackPlayer = new List<ChessPiece>();
         }
         public override bool ValidateMove(int x, int y, int xTarget, int yTarget) 
         {

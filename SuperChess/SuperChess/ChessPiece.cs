@@ -6,18 +6,20 @@ using System.Threading.Tasks;
 
 namespace SuperChess
 {
-    class ChessPiece
+   public class ChessPiece
     {
-       public  bool isWhite = true;       
+        public bool isWhite = true;
 
-        public ChessPiece(bool isWhite)
+        public ChessPiece(bool isWhite, int x, int y)
         {
-            this.isWhite = isWhite; //Sätter om pjäsen är vit eller svart
+            this.isWhite = isWhite; 
         }
+        public ChessPiece()
+        { }
 
         public bool IsChessPieceWhite() //kollar om piece är vit
         {
-            if(this.isWhite == true)
+            if (this.isWhite == true)
             {
                 return true;
             }
@@ -30,7 +32,7 @@ namespace SuperChess
 
         public bool IsChessPieceBlack()//kollar om piece är svart
         {
-            if(this.isWhite == false)
+            if (this.isWhite == false)
             {
                 return true;
             }
@@ -43,18 +45,29 @@ namespace SuperChess
         public string GetChessPieceType() //Ger piece färg vit eller svart
         {
             string color = "W";
-            if(this.isWhite == false)
+            if (this.isWhite == false)
             {
                 color = "B";
             }
-            return color + this.GetChessPieceDescription(); 
+            return color + this.GetChessPieceDescription();
         }
 
         public virtual string GetChessPieceDescription()
         {
             return "U";
         }
+        public int X { get; set; }
+        public int Y { get; set; }
+        public virtual void PositionWhite(int x, int y)
+        {
+            this.X = x;
+            this.Y = y;
+        }
+        public virtual void PositionBlack(int x, int y)
+        {
+            this.X = x;
 
+        }
         public virtual bool ValidateMove(int x, int y, int xTarget, int yTarget)
         {
             return true;
